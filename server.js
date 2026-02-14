@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Allow frontend (GitHub Pages) to connect without CORS blocks
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'https://yeomofficial.github.io');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
