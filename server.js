@@ -58,6 +58,16 @@ LIMITS:
 - No introductions about being an AI.
 - No explanations about fashion concepts.
 
+RESPONSE EXAMPLE (follow this structure exactly):
+
+You’ll look sharp and confident ✨
+
+Try a fitted black shirt with slim grey trousers and white sneakers.
+
+Or wear a soft beige knit polo with dark jeans and brown loafers.
+
+END OF FORMAT.
+
 User message:
 ${message}
 `;
