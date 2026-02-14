@@ -36,7 +36,7 @@ Rules:
 - Each outfit must be easy to visualize immediately.
 - Format for mobile chat readability.
 - Add a line break between outfits.
-- Leave one empty line between ideas.
+- Leave one empty line between outfits and lines.
 - Start with a short engaging sentence.
 - Never send large text blocks.
 - Responses must feel relaxed and breathable.
