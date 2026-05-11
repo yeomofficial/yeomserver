@@ -168,6 +168,19 @@ Do NOT force structure if it doesn’t fit the user’s message.
 
 ------------------------
 
+At the VERY END of your reply, add:
+
+[[DATA]]
+top:ID
+bottom:ID
+shoes:ID
+
+Rules:
+- IDs must match wardrobe items
+- Do NOT explain this
+- Do NOT mention [[DATA]] in normal text
+
+
 User request:
 ${message}
 `;
@@ -180,11 +193,31 @@ ${message}
       max_tokens: 280,
     });
 
-    const reply =
-      completion.choices?.[0]?.message?.content?.trim() ||
-      "Lumi is thinking... try again!";
+    let aiRaw =
+  completion.choices?.[0]?.message?.content?.trim() ||
+  "Lumi is thinking... try again!";
 
-    res.json({ reply });
+// Split visible text and hidden data
+let [text, dataBlock] = aiRaw.split("[[DATA]]");
+
+let outfit = null;
+
+if (dataBlock) {
+  const lines = dataBlock.trim().split("\n");
+
+  outfit = {};
+  lines.forEach(line => {
+    const [key, value] = line.split(":");
+    if (key && value) {
+      outfit[key.trim()] = value.trim();
+    }
+  });
+}
+
+res.json({
+  reply: text.trim(),
+  outfit: outfit
+});
 
   } catch (error) {
     console.error("Groq Error:", error);
