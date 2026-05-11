@@ -201,11 +201,34 @@ ${message}
   completion.choices?.[0]?.message?.content?.trim() ||
   "Lumi is thinking... try again!";
 
-    alert("RAW AI:", aiRaw);
+    console.log("RAW AI:", aiRaw);
 // Split visible text and hidden data
-let [text, dataBlock] = aiRaw.split("[[DATA]]");
+let text = aiRaw;
+let dataBlock = null;
+
+if (aiRaw.includes("[[DATA]]")) {
+  const parts = aiRaw.split("[[DATA]]");
+  text = parts[0];
+  dataBlock = parts[1];
+}
 
 let outfit = null;
+
+if (dataBlock && typeof dataBlock === "string") {
+  const lines = dataBlock.trim().split("\n");
+
+  outfit = {};
+
+  lines.forEach(line => {
+    const parts = line.split(":");
+    if (parts.length < 2) return;
+
+    const key = parts[0].trim();
+    const value = parts[1].trim();
+
+    outfit[key] = value;
+  });
+}
 
 if (dataBlock) {
   const lines = dataBlock.trim().split("\n");
