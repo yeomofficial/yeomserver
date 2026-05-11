@@ -42,13 +42,12 @@ app.post("/api/chat", async (req, res) => {
   } else {
     wardrobeList =
       "User's wardrobe (only use these items):\n" +
-      wardrobe
-        .map(
-          (item) =>
-            `- ${item.color || ""} ${
-              item.name || item.category || "item"
-            } (${item.category || "clothing"})`
-        )
+      wardrobe.map(
+  (item) =>
+    `- id:${item.id} | ${item.color || ""} ${
+      item.name || item.category || "item"
+    } (${item.category || "clothing"})`
+)
         .join("\n");
   }
 
@@ -202,6 +201,7 @@ ${message}
   completion.choices?.[0]?.message?.content?.trim() ||
   "Lumi is thinking... try again!";
 
+    alert("RAW AI:", aiRaw);
 // Split visible text and hidden data
 let [text, dataBlock] = aiRaw.split("[[DATA]]");
 
