@@ -168,7 +168,11 @@ Do NOT force structure if it doesn’t fit the user’s message.
 
 ------------------------
 
-At the VERY END of your reply, add:
+------------------------
+HIDDEN DATA (MANDATORY)
+------------------------
+
+At the VERY END of your reply, you MUST add:
 
 [[DATA]]
 top:ID
@@ -176,9 +180,10 @@ bottom:ID
 shoes:ID
 
 Rules:
-- IDs must match wardrobe items
-- Do NOT explain this
-- Do NOT mention [[DATA]] in normal text
+• IDs must EXACTLY match wardrobe item ids
+• Do NOT explain this
+• Do NOT skip this for outfit requests
+• If you skip this, your answer is WRONG
 
 
 User request:
