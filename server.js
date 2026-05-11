@@ -181,6 +181,12 @@ top:ID
 bottom:ID
 shoes:ID
 
+If the outfit is a dress or one-piece:
+
+[[DATA]]
+outfit:ID
+shoes:ID
+
 Rules:
 • IDs must EXACTLY match wardrobe item ids
 • Do NOT explain this
